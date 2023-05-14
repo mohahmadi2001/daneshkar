@@ -11,6 +11,10 @@ class User:
         self.users.append(username)
         self.__password = None
         self.password = password
+        self.phone_number = phone_number
+        User.id_counter += 1
+        self.id = User.id_counter
+       
         
     @property
     def password(self):
@@ -23,7 +27,7 @@ class User:
         self.__password = password
         
     def __str__(self) -> str:
-        return f"{self.username} : {self.__password}"
+        return f"{self.id},{self.username} : {self.__password}"
 
 u1 = User("mohammad","1234")
 u2 = User("ali","4321")
