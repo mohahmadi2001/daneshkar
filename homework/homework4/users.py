@@ -1,4 +1,3 @@
-import uuid
 
 class User:
     id_counter = 0
@@ -29,7 +28,3 @@ class User:
     def __str__(self) -> str:
         return f"{self.id},{self.username} : {self.__password}"
 
-u1 = User("mohammad","1234")
-u2 = User("ali","4321")
-print(u1)
-print(u2)
