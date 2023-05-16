@@ -3,6 +3,7 @@ In this module, the previously created user class is used
 """
 from users import User
 import getpass
+import hashlib
 
 def register_user():
     """
@@ -23,11 +24,12 @@ def login_user():
     if username not in User.users:
         print("This username does not exist.")
         return
-    User.current_user = User.users[username]
+    user = User.users[username]
     
-    if User.users[username].password != password:
+    if hashlib.sha256(password.encode()).hexdigest() != user.password:
         print("Incorrect password.")
         return
+    User.current_user = User.users[username]
     print("Login successful.")
     
 

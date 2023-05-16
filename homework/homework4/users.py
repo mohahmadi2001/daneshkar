@@ -1,4 +1,5 @@
 import uuid
+import hashlib
 """
     In this module, a user class is created that stores user information
     including username, password and phone number
@@ -12,7 +13,6 @@ class User:
             raise ValueError("This username already exists.")
         self.username = username
         User.users[self.username] = self
-        self.__password = None
         self.password = password
         self.phone_number = phone_number
         # User.id_counter += 1
@@ -28,7 +28,7 @@ class User:
     def password(self, password : str):
         if len(password) < 4:
             raise ValueError("Password must be at least 4 characters long.")
-        self.__password = password
+        self.__password = hashlib.sha256(password.encode()).hexdigest()
         
     @staticmethod
     def valid_password(old_password: int,new_password: int,confirm_password: int) -> int:
