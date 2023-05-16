@@ -2,13 +2,14 @@
 In this module, the previously created user class is used
 """
 from users import User
+import getpass
 
 def register_user():
     """
     In this function, user registering user is checked
     """
     username = input("Enter a username: ")
-    password = input("Enter a password (at least 4 characters): ")
+    password = getpass.getpass("Enter a password (at least 4 characters): ")
     phone_number = input("Enter a phone number (optional): ")
     User(username,password,phone_number)
 
@@ -17,7 +18,7 @@ def login_user():
     In this function, user login is checked
     """
     username = input("Enter your username: ")
-    password = input("Enter your password: ")
+    password = getpass.getpass("Enter your password: ")
     
     if username not in User.users:
         print("This username does not exist.")
@@ -47,7 +48,7 @@ def edit_user():
             User.users[new_username] = User.current_user
             print("Username successfully changed.")
     elif choice == 2:
-        new_phone_number = input("Enter new phone number: ")
+        new_phone_number = getpass.getpass("Enter your password: ")
         User.current_user.phone_number = new_phone_number
         print("Phone number successfully changed.")
     else:
@@ -57,9 +58,9 @@ def change_password():
     """
     In this function, user can change password
     """
-    old_password = input("Enter old password: ")
-    new_password = input("Enter new password: ")
-    confirm_password = input("Confirm new password: ")
+    old_password = getpass.getpass("Enter old password: ")
+    new_password = getpass.getpass("Enter new password: ")
+    confirm_password = getpass.getpass("Confirm new password: ")
     try:
         User.valid_password(old_password, new_password, confirm_password)
     except ValueError as e:
