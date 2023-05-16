@@ -50,7 +50,7 @@ def edit_user():
             User.users[new_username] = User.current_user
             print("Username successfully changed.")
     elif choice == 2:
-        new_phone_number = getpass.getpass("Enter your password: ")
+        new_phone_number = input("Enter new phone number: ")
         User.current_user.phone_number = new_phone_number
         print("Phone number successfully changed.")
     else:
